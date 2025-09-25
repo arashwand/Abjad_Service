@@ -309,6 +309,7 @@ public function ajax_generate_quick_report() {
             foreach ($this->available_services as $key => $service) {
                 if ($product->get_meta('_abjad_service_' . $key) === 'yes') {
                     $enabled_services[$key] = array(
+                        'name' => $service['name'],
                         'limit' => $product->get_meta('_abjad_service_' . $key . '_limit') ?: $service['default_limit'],
                         'endpoint' => $service['endpoint']
                     );
