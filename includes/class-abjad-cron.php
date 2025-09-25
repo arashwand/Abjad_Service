@@ -152,4 +152,5 @@ class Abjad_Cron {
     }
 }
 
+new Abjad_Cron();
 ?>
