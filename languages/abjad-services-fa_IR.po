@@ -1,0 +1,136 @@
+# Abjad Services Persian Translation
+# Copyright (C) 2024 Abjad Team
+msgid ""
+msgstr ""
+"Project-Id-Version: Abjad Services 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-15 12:00+0330\n"
+"PO-Revision-Date: 2024-01-15 12:00+0330\n"
+"Last-Translator: Abjad Team <team@abjad.com>\n"
+"Language-Team: Persian <team@abjad.com>\n"
+"Language: fa_IR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: includes/class-abjad-admin.php:45
+msgid "Abjad Services"
+msgstr "سرویس ابجد"
+
+#: includes/class-abjad-admin.php:46
+msgid "Enable Abjad Services"
+msgstr "فعال‌سازی سرویس ابجد"
+
+#: includes/class-abjad-admin.php:47
+msgid "This product will have access to Abjad services"
+msgstr "این محصول به سرویس‌های ابجد دسترسی خواهد داشت"
+
+#: includes/class-abjad-admin.php:50
+msgid "Available Services:"
+msgstr "سرویس‌های قابل دسترسی:"
+
+#: includes/class-abjad-admin.php:55
+msgid "Text to Speech"
+msgstr "تبدیل متن به صوت"
+
+#: includes/class-abjad-admin.php:56
+msgid "High quality Persian text to speech conversion"
+msgstr "سرویس تبدیل متن فارسی به صوت با کیفیت بالا"
+
+#: includes/class-abjad-admin.php:60
+msgid "Text Analysis"
+msgstr "تحلیل متن"
+
+#: includes/class-abjad-admin.php:61
+msgid "Advanced text analysis and information extraction"
+msgstr "آنالیز پیشرفته متن و استخراج اطلاعات"
+
+#: includes/class-abjad-admin.php:65
+msgid "Content Generation"
+msgstr "تولید محتوا"
+
+#: includes/class-abjad-admin.php:66
+msgid "Smart content generation based on learning patterns"
+msgstr "تولید محتوای هوشمند بر اساس الگوهای یادگیری"
+
+#: includes/class-abjad-admin.php:70
+msgid "Smart Translation"
+msgstr "ترجمه هوشمند"
+
+#: includes/class-abjad-admin.php:71
+msgid "Professional translation of specialized texts"
+msgstr "ترجمه تخصصی متن‌های تخصصی"
+
+#: includes/class-abjad-admin.php:75
+msgid "Text Summarization"
+msgstr "خلاصه‌سازی متن"
+
+#: includes/class-abjad-admin.php:76
+msgid "Intelligent summarization of long texts"
+msgstr "خلاصه‌سازی هوشمند متون طولانی"
+
+#: includes/class-abjad-admin.php:80
+msgid "Daily Limit"
+msgstr "محدودیت روزانه"
+
+#: includes/class-abjad-admin.php:81
+msgid "Number of allowed uses per day"
+msgstr "تعداد مجاز استفاده در روز"
+
+#: includes/class-abjad-admin.php:85
+msgid "License Expiry Days"
+msgstr "مدت اعتبار مجوز (روز)"
+
+#: includes/class-abjad-admin.php:86
+msgid "License validity period in days"
+msgstr "مدت زمان اعتبار مجوز پس از خرید"
+
+#: includes/class-abjad-admin.php:90
+msgid "API Key (Optional)"
+msgstr "کلید API (اختیاری)"
+
+#: includes/class-abjad-admin.php:91
+msgid "Special API key if needed"
+msgstr "در صورت نیاز به کلید API ویژه"
+
+#: includes/class-abjad-frontend.php:120
+msgid "Please log in to use the service."
+msgstr "لطفا وارد حساب کاربری خود شوید."
+
+#: includes/class-abjad-frontend.php:125
+msgid "No active license found. Please purchase a service package."
+msgstr "هیچ مجوز فعالی یافت نشد. لطفا یک پکیج سرویس خریداری کنید."
+
+#: includes/class-abjad-frontend.php:130
+msgid "Loading..."
+msgstr "در حال بارگذاری..."
+
+#: includes/class-abjad-frontend.php:135
+msgid "Use Service"
+msgstr "استفاده از سرویس"
+
+#: includes/class-abjad-frontend.php:140
+msgid "Enter your text here..."
+msgstr "متن خود را اینجا وارد کنید..."
+
+#: includes/class-abjad-frontend.php:145
+msgid "Processing..."
+msgstr "در حال پردازش..."
+
+#: includes/class-abjad-frontend.php:150
+msgid "Service executed successfully"
+msgstr "سرویس با موفقیت اجرا شد"
+
+#: includes/class-abjad-frontend.php:155
+msgid "Remaining uses: %d"
+msgstr "تعداد باقیمانده: %d"
+
+#: includes/class-abjad-frontend.php:160
+msgid "Error occurred"
+msgstr "خطا رخ داد"
+
+#: includes/class-abjad-frontend.php:165
+msgid "Network error: %s"
+msgstr "خطای شبکه: %s"

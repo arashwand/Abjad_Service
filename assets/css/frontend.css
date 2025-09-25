@@ -1,0 +1,175 @@
+/* استایل‌های اصلی سرویس ابجد */
+.abjad-service-panel {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.abjad-alert {
+    padding: 20px;
+    border-radius: 8px;
+    margin: 15px 0;
+    border-right: 4px solid;
+}
+
+.abjad-warning {
+    background: #fff3cd;
+    border-color: #ffc107;
+    color: #856404;
+}
+
+.abjad-info {
+    background: #d1ecf1;
+    border-color: #17a2b8;
+    color: #0c5460;
+}
+
+.abjad-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #007cba;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.abjad-btn:hover {
+    background: #005a87;
+    color: white;
+}
+
+.license-card {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    margin: 20px 0;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    border-right: 4px solid #007cba;
+}
+
+.service-item {
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 15px 0;
+    transition: box-shadow 0.3s;
+}
+
+.service-item:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.service-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.service-header h4 {
+    margin: 0;
+    color: #2c3e50;
+}
+
+.usage-badge {
+    background: #28a745;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.service-desc {
+    color: #6c757d;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.service-interface textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 100px;
+}
+
+.execute-btn {
+    background: #007cba;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.execute-btn:hover:not(:disabled) {
+    background: #005a87;
+}
+
+.execute-btn:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+}
+
+.service-result {
+    margin-top: 15px;
+    min-height: 50px;
+}
+
+.success-result {
+    background: #d4edda;
+    padding: 15px;
+    border-radius: 5px;
+    border-right: 4px solid #28a745;
+}
+
+.error-result {
+    background: #f8d7da;
+    padding: 15px;
+    border-radius: 5px;
+    border-right: 4px solid #dc3545;
+}
+
+.usage-bar {
+    width: 100%;
+    height: 6px;
+    background: #e9ecef;
+    border-radius: 3px;
+    margin-top: 5px;
+    overflow: hidden;
+}
+
+.usage-progress {
+    height: 100%;
+    background: #28a745;
+    transition: width 0.3s;
+}
+
+/* ریسپانسیو */
+@media (max-width: 768px) {
+    .abjad-service-panel {
+        padding: 10px;
+    }
+    
+    .service-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .usage-badge {
+        margin-top: 10px;
+    }
+    
+    .license-card {
+        padding: 15px;
+    }
+}

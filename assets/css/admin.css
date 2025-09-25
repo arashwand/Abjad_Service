@@ -1,0 +1,655 @@
+/* استایل‌های بخش مدیریت - تکمیل شده */
+.abjad-service-section {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    border-right: 4px solid #007cba;
+}
+
+.abjad-service-section h3 {
+    color: #007cba;
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #dee2e6;
+    font-size: 1.3em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.abjad-service-section h3:before {
+    content: "🎯";
+    font-size: 1.2em;
+}
+
+#abjad-services-container {
+    border-top: 1px solid #dee2e6;
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+.service-option {
+    background: white;
+    padding: 15px;
+    border-radius: 6px;
+    margin: 15px 0;
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.service-option:hover {
+    border-color: #007cba;
+    box-shadow: 0 2px 8px rgba(0, 124, 186, 0.1);
+}
+
+.service-option .checkbox {
+    margin-bottom: 10px;
+}
+
+.service-option label {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.service-option .description {
+    font-size: 0.9em;
+    color: #6c757d;
+    margin: 5px 0 10px 0;
+    line-height: 1.4;
+}
+
+/* صفحه مدیریت */
+.abjad-admin-page {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.abjad-admin-page h1 {
+    color: #2c3e50;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #e9ecef;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.abjad-admin-page h1:before {
+    content: "🎯";
+    font-size: 1.2em;
+}
+
+.abjad-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.stat-card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+    border-top: 4px solid #007cba;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+}
+
+.stat-card h3 {
+    margin: 0 0 10px 0;
+    color: #6c757d;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.stat-number {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #007cba;
+    display: block;
+}
+
+.abjad-settings {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+    margin: 30px 0;
+}
+
+.abjad-settings h2 {
+    color: #2c3e50;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+/* ویجت داشبورد */
+.abjad-dashboard-widget {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+.abjad-dashboard-widget ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.abjad-dashboard-widget li {
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.abjad-dashboard-widget li:last-child {
+    border-bottom: none;
+}
+
+.abjad-dashboard-widget strong {
+    color: #007cba;
+}
+
+.abjad-dashboard-widget p {
+    margin: 15px 0 0 0;
+    text-align: center;
+}
+
+.abjad-dashboard-widget a {
+    text-decoration: none;
+    color: #007cba;
+    font-weight: 600;
+}
+
+.abjad-dashboard-widget a:hover {
+    text-decoration: underline;
+}
+
+/* فرم‌های تنظیمات */
+.abjad-settings .form-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.abjad-settings .form-table th {
+    width: 200px;
+    text-align: right;
+    padding: 15px 20px 15px 10px;
+    font-weight: 600;
+    color: #2c3e50;
+    vertical-align: top;
+}
+
+.abjad-settings .form-table td {
+    padding: 15px 10px 15px 20px;
+    vertical-align: top;
+}
+
+.abjad-settings input[type="text"],
+.abjad-settings input[type="url"],
+.abjad-settings input[type="number"],
+.abjad-settings select {
+    width: 100%;
+    max-width: 400px;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.abjad-settings input:focus,
+.abjad-settings select:focus {
+    outline: none;
+    border-color: #007cba;
+    box-shadow: 0 0 0 2px rgba(0, 124, 186, 0.2);
+}
+
+.abjad-settings .description {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+/* دکمه‌ها */
+.abjad-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.abjad-btn-primary {
+    background: #007cba;
+    color: white;
+}
+
+.abjad-btn-primary:hover {
+    background: #005a87;
+    color: white;
+}
+
+.abjad-btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.abjad-btn-secondary:hover {
+    background: #545b62;
+    color: white;
+}
+
+.abjad-btn-success {
+    background: #28a745;
+    color: white;
+}
+
+.abjad-btn-success:hover {
+    background: #1e7e34;
+    color: white;
+}
+
+.abjad-btn-danger {
+    background: #dc3545;
+    color: white;
+}
+
+.abjad-btn-danger:hover {
+    background: #c82333;
+    color: white;
+}
+
+.abjad-btn-outline {
+    background: transparent;
+    border: 1px solid #007cba;
+    color: #007cba;
+}
+
+.abjad-btn-outline:hover {
+    background: #007cba;
+    color: white;
+}
+
+/* تب‌های مدیریت */
+.abjad-tabs-wrapper {
+    margin: 30px 0;
+}
+
+.abjad-tabs-nav {
+    display: flex;
+    border-bottom: 2px solid #e9ecef;
+    margin-bottom: 0;
+}
+
+.abjad-tab-nav-item {
+    padding: 12px 24px;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: #6c757d;
+    transition: all 0.3s ease;
+}
+
+.abjad-tab-nav-item:hover {
+    color: #007cba;
+}
+
+.abjad-tab-nav-item.active {
+    color: #007cba;
+    border-bottom-color: #007cba;
+}
+
+.abjad-tab-content {
+    display: none;
+    padding: 30px;
+    background: white;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.abjad-tab-content.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* جداول داده */
+.abjad-data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.abjad-data-table th {
+    background: #f8f9fa;
+    padding: 15px;
+    text-align: right;
+    font-weight: 600;
+    color: #2c3e50;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.abjad-data-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.abjad-data-table tr:hover {
+    background: #f8f9fa;
+}
+
+.abjad-data-table .status-active {
+    color: #28a745;
+    font-weight: 600;
+}
+
+.abjad-data-table .status-expired {
+    color: #dc3545;
+    font-weight: 600;
+}
+
+.abjad-data-table .status-pending {
+    color: #ffc107;
+    font-weight: 600;
+}
+
+/* کارت‌های اطلاعات */
+.abjad-info-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.abjad-info-card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+    border-left: 4px solid #007cba;
+}
+
+.abjad-info-card h3 {
+    margin: 0 0 15px 0;
+    color: #2c3e50;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.abjad-info-card p {
+    margin: 0;
+    color: #6c757d;
+    line-height: 1.6;
+}
+
+/* اعلان‌ها */
+.abjad-notice {
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 6px;
+    border-right: 4px solid;
+}
+
+.abjad-notice-success {
+    background: #d4edda;
+    border-color: #28a745;
+    color: #155724;
+}
+
+.abjad-notice-warning {
+    background: #fff3cd;
+    border-color: #ffc107;
+    color: #856404;
+}
+
+.abjad-notice-error {
+    background: #f8d7da;
+    border-color: #dc3545;
+    color: #721c24;
+}
+
+.abjad-notice-info {
+    background: #d1ecf1;
+    border-color: #17a2b8;
+    color: #0c5460;
+}
+
+/* پیش‌بارگذاری */
+.abjad-loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #007cba;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ابزارک‌های کوچک */
+.abjad-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: 600;
+}
+
+.abjad-badge-success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.abjad-badge-warning {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.abjad-badge-error {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.abjad-badge-info {
+    background: #d1ecf1;
+    color: #0c5460;
+}
+
+/* ریسپانسیو */
+@media (max-width: 768px) {
+    .abjad-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .abjad-settings .form-table th,
+    .abjad-settings .form-table td {
+        display: block;
+        width: 100%;
+        padding: 10px 0;
+    }
+    
+    .abjad-settings .form-table th {
+        text-align: right;
+        padding-bottom: 5px;
+        border-bottom: none;
+    }
+    
+    .abjad-tabs-nav {
+        flex-direction: column;
+    }
+    
+    .abjad-tab-nav-item {
+        border-bottom: none;
+        border-right: 3px solid transparent;
+        text-align: right;
+    }
+    
+    .abjad-tab-nav-item.active {
+        border-right-color: #007cba;
+        border-bottom: none;
+    }
+    
+    .abjad-info-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .abjad-data-table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .abjad-admin-page {
+        padding: 10px;
+    }
+    
+    .abjad-settings {
+        padding: 20px 15px;
+    }
+    
+    .abjad-tab-content {
+        padding: 20px 15px;
+    }
+    
+    .abjad-info-card {
+        padding: 20px;
+    }
+}
+
+/* utilities */
+.text-right { text-align: right; }
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.mt-20 { margin-top: 20px; }
+.mb-20 { margin-bottom: 20px; }
+.p-20 { padding: 20px; }
+.hidden { display: none; }
+.flex { display: flex; }
+.flex-center { display: flex; justify-content: center; align-items: center; }
+.justify-between { justify-content: space-between; }
+.items-center { align-items: center; }
+
+/* انیمیشن‌های ویژه */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.abjad-pulse {
+    animation: pulse 2s infinite;
+}
+
+/* اسکریپت‌های پویا */
+#abjad-services-container .service-option {
+    animation: slideInRight 0.5s ease;
+}
+
+.service-option:nth-child(odd) {
+    animation-delay: 0.1s;
+}
+
+.service-option:nth-child(even) {
+    animation-delay: 0.2s;
+}
+
+/* حالت تاریک (پشتیبانی از تم تاریک وردپرس) */
+@media (prefers-color-scheme: dark) {
+    .abjad-service-section {
+        background: #2d2d2d;
+        border-right-color: #4da6ff;
+    }
+    
+    .abjad-service-section h3 {
+        color: #4da6ff;
+    }
+    
+    .service-option {
+        background: #3d3d3d;
+        border-color: #4d4d4d;
+        color: #e0e0e0;
+    }
+    
+    .abjad-admin-page h1 {
+        color: #e0e0e0;
+        border-bottom-color: #4d4d4d;
+    }
+    
+    .stat-card {
+        background: #3d3d3d;
+        color: #e0e0e0;
+    }
+    
+    .abjad-settings {
+        background: #3d3d3d;
+        color: #e0e0e0;
+    }
+    
+    .abjad-settings h2 {
+        color: #e0e0e0;
+        border-bottom-color: #4d4d4d;
+    }
+    
+    .abjad-settings .form-table th {
+        color: #e0e0e0;
+    }
+    
+    .abjad-settings input[type="text"],
+    .abjad-settings input[type="url"],
+    .abjad-settings input[type="number"],
+    .abjad-settings select {
+        background: #2d2d2d;
+        border-color: #4d4d4d;
+        color: #e0e0e0;
+    }
+    
+    .abjad-settings input:focus,
+    .abjad-settings select:focus {
+        border-color: #4da6ff;
+        box-shadow: 0 0 0 2px rgba(77, 166, 255, 0.2);
+    }
+}

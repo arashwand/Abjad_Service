@@ -1,0 +1,200 @@
+/* استایل‌های پیشرفته برای ویژگی‌های JavaScript */
+.abjad-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 5px;
+    color: white;
+    z-index: 10000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    animation: slideInRight 0.3s ease;
+}
+
+.abjad-notification.success { background: #28a745; }
+.abjad-notification.warning { background: #ffc107; color: #212529; }
+.abjad-notification.error { background: #dc3545; }
+.abjad-notification.info { background: #17a2b8; }
+
+.close-notification {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 10px;
+    float: left;
+}
+
+.char-counter {
+    font-size: 12px;
+    color: #6c757d;
+    margin-top: 5px;
+}
+
+.char-counter.warning {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.draft-message {
+    font-size: 12px;
+    color: #28a745;
+    display: none;
+}
+
+.service-details {
+    display: none;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+    border-right: 3px solid #007cba;
+}
+
+.service-item.executed-success {
+    animation: pulseSuccess 2s ease;
+}
+
+@keyframes pulseSuccess {
+    0% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(40, 167, 69, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0); }
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* استایل‌های تب‌ها */
+.abjad-tabs {
+    display: flex;
+    border-bottom: 2px solid #dee2e6;
+    margin-bottom: 20px;
+}
+
+.abjad-tab-btn {
+    padding: 12px 24px;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.abjad-tab-btn.active {
+    border-bottom-color: #007cba;
+    color: #007cba;
+    font-weight: bold;
+}
+
+.abjad-tab-content {
+    display: none;
+}
+
+.abjad-tab-content.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* استایل‌های موبایل */
+.abjad-mobile-menu-btn {
+    display: none;
+    background: #007cba;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.abjad-services-sidebar {
+    transition: transform 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .abjad-mobile-menu-btn {
+        display: block;
+    }
+    
+    .abjad-services-sidebar {
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 300px;
+        height: 100vh;
+        background: white;
+        z-index: 1000;
+        box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+        overflow-y: auto;
+    }
+    
+    .abjad-services-sidebar.active {
+        transform: translateX(-300px);
+    }
+}
+
+/* استایل‌های دکمه‌های action */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.action-btn {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.3s;
+}
+
+.action-btn:hover {
+    background: #f8f9fa;
+}
+
+.copy-result-btn:hover { border-color: #28a745; color: #28a745; }
+.export-result-btn:hover { border-color: #007cba; color: #007cba; }
+.share-result-btn:hover { border-color: #6f42c1; color: #6f42c1; }
+
+/* استایل‌های modal */
+.abjad-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 10000;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
