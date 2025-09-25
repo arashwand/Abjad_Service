@@ -188,8 +188,4 @@ class Abjad_Activator {
     }
 }
 
-// ثبت هوک‌های فعال‌سازی و غیرفعال‌سازی
-register_activation_hook(__FILE__, array('Abjad_Activator', 'activate'));
-register_deactivation_hook(__FILE__, array('Abjad_Activator', 'deactivate'));
-register_uninstall_hook(__FILE__, array('Abjad_Activator', 'uninstall'));
 ?>

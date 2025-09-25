@@ -35,10 +35,16 @@ function abjad_check_woocommerce_active() {
 }
 
 // بارگذاری فایل‌های مورد نیاز
+require_once ABJAD_PLUGIN_PATH . 'includes/class-abjad-activator.php';
+require_once ABJAD_PLUGIN_PATH . 'includes/class-abjad-cron.php';
 require_once ABJAD_PLUGIN_PATH . 'includes/class-abjad-admin.php';
 require_once ABJAD_PLUGIN_PATH . 'includes/class-abjad-frontend.php';
 require_once ABJAD_PLUGIN_PATH . 'includes/class-abjad-api.php';
 require_once ABJAD_PLUGIN_PATH . 'includes/class-abjad-license.php';
+
+// ثبت هوک‌های فعال‌سازی و غیرفعال‌سازی
+register_activation_hook(__FILE__, array('Abjad_Activator', 'activate'));
+register_deactivation_hook(__FILE__, array('Abjad_Activator', 'deactivate'));
 
 // راه‌اندازی افزونه
 class AbjadServices {
@@ -70,6 +76,11 @@ class AbjadServices {
         $this->admin = new Abjad_Admin($this->api, $this->license);
         $this->frontend = new Abjad_Frontend($this->api, $this->license);
         
+        // راه‌اندازی وظایف پس‌زمینه
+        if (defined('DOING_CRON') && DOING_CRON) {
+            new Abjad_Cron();
+        }
+
         // ثبت هوک‌های عمومی
         add_action('init', array($this, 'register_shortcodes'));
         add_action('wp_enqueue_scripts', array($this, 'enqueue_frontend_assets'));

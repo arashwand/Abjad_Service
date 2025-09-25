@@ -384,48 +384,5 @@ public function ajax_generate_quick_report() {
         <?php
     }
 
-    public function enqueue_admin_scripts($hook) {
-    // فقط در صفحه ویرایش محصول اسکریپت‌ها را بارگذاری کن
-    if ('post.php' !== $hook && 'post-new.php' !== $hook) {
-        return;
-    }
-    
-    // فقط برای محصولات ووکامرس
-    $screen = get_current_screen();
-    if ($screen->post_type !== 'product') {
-        return;
-    }
-    
-    wp_enqueue_script('abjad-admin', ABJAD_PLUGIN_URL . 'assets/js/admin.js', array('jquery'), '1.0.0', true);
-    
-    // انتقال داده‌ها به JavaScript
-    wp_localize_script('abjad-admin', 'abjad_admin', array(
-        'ajax_url' => admin_url('admin-ajax.php'),
-        'nonce' => wp_create_nonce('abjad_admin_nonce'),
-        'default_limits' => array(
-            'text_to_speech' => 50,
-            'text_analysis' => 100,
-            'content_generation' => 30,
-            'smart_translation' => 200,
-            'text_summarization' => 80
-        ),
-        'debug' => defined('WP_DEBUG') && WP_DEBUG
-    ));
-}
-
-public function enqueue_admin_styles($hook) {
-    if ('post.php' !== $hook && 'post-new.php' !== $hook) {
-        return;
-    }
-    
-    $screen = get_current_screen();
-    if ($screen->post_type !== 'product') {
-        return;
-    }
-    
-    wp_enqueue_style('abjad-admin', ABJAD_PLUGIN_URL . 'assets/css/admin.css', array(), '1.0.0');
-}
-
-    
 }
 ?>
