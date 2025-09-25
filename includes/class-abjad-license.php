@@ -2,15 +2,11 @@
 class Abjad_License {
     
     public function create_license($user_id, $user_email, $product_id, $services, $expiry_days, $order_id) {
-        // تولید توکن منحصر به فرد
-        $token = $this->generate_license_token($user_id, $order_id);
-        
-        // داده‌های مجوز
+        // داده‌های مجوز (بدون توکن)
         $license_data = array(
             'userId' => strval($user_id),
             'userEmail' => $user_email,
             'productId' => strval($product_id),
-            'token' => $token,
             'services' => $services,
             'expiryDate' => date('Y-m-d', strtotime("+$expiry_days days")),
             'createdAt' => current_time('mysql')
@@ -18,11 +14,14 @@ class Abjad_License {
         
         // ارسال به سرویس ASP.NET
         $api = new Abjad_API();
-        $success = $api->create_license($license_data);
+        $response = $api->create_license($license_data);
         
-        if ($success) {
+        if ($response && isset($response['token'])) {
+            $token = $response['token'];
+
             // ذخیره توکن در پروفایل کاربر
             update_user_meta($user_id, 'abjad_service_token', $token);
+            // ذخیره داده‌های اصلی مجوز (بدون توکن) برای مراجعات بعدی
             update_user_meta($user_id, 'abjad_license_data', $license_data);
             
             // ارسال ایمیل به کاربر
@@ -49,10 +48,6 @@ class Abjad_License {
         }
         
         return array($license_info);
-    }
-    
-    private function generate_license_token($user_id, $order_id) {
-        return md5($user_id . '_' . $order_id . '_' . time() . '_' . wp_generate_password(16, false));
     }
     
     private function send_license_email($email, $token, $services, $expiry_days) {
