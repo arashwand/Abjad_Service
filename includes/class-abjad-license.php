@@ -60,7 +60,7 @@ class Abjad_License {
         
         $services_list = '';
         foreach ($services as $key => $service) {
-            $services_list .= "<li>{$service['name']} - {$service['limit']} استفاده روزانه</li>";
+            $services_list .= "<li>{$service['name']} - {$service['limit']} بار استفاده</li>";
         }
         
         $message = "

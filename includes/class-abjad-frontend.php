@@ -56,10 +56,19 @@ class Abjad_Frontend {
                         <?php foreach ($license['services'] as $service): ?>
                         <div class="service-status-item">
                             <span class="service-name"><?php echo $service['name']; ?></span>
-                            <span class="service-usage"><?php echo $service['used_today']; ?> / <?php echo $service['daily_limit']; ?></span>
+                            <?php
+                            // فرض می‌کنیم API فیلدهای total_used و total_limit را برمی‌گرداند
+                            $total_limit = isset($service['total_limit']) ? (int)$service['total_limit'] : (isset($service['daily_limit']) ? (int)$service['daily_limit'] : 0);
+                            $total_used = isset($service['total_used']) ? (int)$service['total_used'] : (isset($service['used_today']) ? (int)$service['used_today'] : 0);
+                            $percentage = ($total_limit > 0) ? min(($total_used / $total_limit) * 100, 100) : 0;
+                            ?>
+                            <span class="service-usage">تعداد استفاده: <?php echo $total_used; ?> / <?php echo $total_limit; ?></span>
                             <div class="usage-bar">
-                                <div class="usage-progress" style="width: <?php echo ($service['used_today'] / $service['daily_limit']) * 100; ?>%"></div>
+                                <div class="usage-progress" style="width: <?php echo $percentage; ?>%"></div>
                             </div>
+                            <?php if ($total_limit > 0 && $total_used >= $total_limit): ?>
+                                <div class="abjad-alert abjad-error" style="margin-top: 10px;">اعتبار این سرویس به اتمام رسیده است.</div>
+                            <?php endif; ?>
                         </div>
                         <?php endforeach; ?>
                     </div>
@@ -106,6 +115,29 @@ class Abjad_Frontend {
         $user_id = get_current_user_id();
         $service_key = sanitize_text_field($_POST['service_key']);
         $input_text = sanitize_textarea_field($_POST['input_text']);
+
+        // اعتبارسنجی سمت سرور قبل از ارسال به API
+        $licenses = $this->license->get_user_licenses($user_id);
+        $can_execute = false;
+        if (!empty($licenses)) {
+            foreach ($licenses as $license) {
+                if (isset($license['services'][$service_key])) {
+                    $service = $license['services'][$service_key];
+                    $total_limit = isset($service['total_limit']) ? (int)$service['total_limit'] : (isset($service['daily_limit']) ? (int)$service['daily_limit'] : 0);
+                    $total_used = isset($service['total_used']) ? (int)$service['total_used'] : (isset($service['used_today']) ? (int)$service['used_today'] : 0);
+
+                    if ($total_limit === 0 || $total_used < $total_limit) { // 0 a unlimited
+                        $can_execute = true;
+                        break;
+                    }
+                }
+            }
+        }
+
+        if (!$can_execute) {
+            wp_send_json_error(array('error' => 'اعتبار شما برای استفاده از این سرویس به اتمام رسیده است.'));
+            return;
+        }
         
         // اجرای سرویس از طریق API
         $result = $this->api->execute_service($user_id, $service_key, $input_text);
