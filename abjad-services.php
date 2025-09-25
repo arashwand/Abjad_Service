@@ -3,7 +3,7 @@
  * Plugin Name: سرویس ابجد
  * Plugin URI: https://vip.elm-asma.ir
  * Description: یکپارچه‌سازی سرویس‌های هوشمند ابجد با وردپرس
- * Version: 1.0.2
+ * Version: 1.0.6
  * Author: آرش کارگر
  * Text Domain: abjad-services
  * Domain Path: /languages
