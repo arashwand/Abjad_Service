@@ -5,24 +5,8 @@
 class Abjad_Cron {
     
     public function __construct() {
-        add_action('abjad_daily_usage_reset', array($this, 'reset_daily_usage'));
         add_action('abjad_license_expiry_check', array($this, 'check_license_expiry'));
         add_action('abjad_cleanup_old_logs', array($this, 'cleanup_old_logs'));
-    }
-    
-    /**
-     * بازنشانی استفاده روزانه سرویس‌ها
-     */
-    public function reset_daily_usage() {
-        global $wpdb;
-        
-        // این تابع باید با سرویس ASP.NET همگام شود
-        // در اینجا فقط لاگ می‌کنیم
-        $this->log_cron_event('daily_usage_reset', 'Daily usage reset initiated');
-        
-        // در واقعیت، این کار باید از طریق API به سرویس ASP.NET اطلاع داده شود
-        $api = new Abjad_API();
-        // $api->reset_daily_usage();
     }
     
     /**

@@ -60,7 +60,7 @@ class Abjad_License {
         
         $services_list = '';
         foreach ($services as $key => $service) {
-            $services_list .= "<li>{$service['name']} - {$service['limit']} استفاده روزانه</li>";
+            $services_list .= "<li>{$service['name']} - {$service['limit']} بار استفاده</li>";
         }
         
         $message = "
@@ -99,16 +99,9 @@ class Abjad_License {
         ");
     }
     
-    public function get_today_usage_count() {
-        // این تابع نیاز به پیاده‌سازی با دیتابیس سرویس ASP.NET دارد
-        return 0; // مقدار موقت
-    }
-    
     public function get_license_stats() {
         return array(
-            'active_licenses' => $this->get_active_licenses_count(),
-            'today_usage' => $this->get_today_usage_count(),
-            'month_usage' => 0 // پیاده‌سازی مشابه
+            'active_licenses' => $this->get_active_licenses_count()
         );
     }
 }

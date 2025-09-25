@@ -111,14 +111,14 @@ class Abjad_Admin {
             // محدودیت استفاده
             woocommerce_wp_text_input(array(
                 'id' => '_abjad_service_' . $key . '_limit',
-                'label' => 'محدودیت روزانه',
+                'label' => 'تعداد کل مجاز',
                 'type' => 'number',
                 'custom_attributes' => array(
                     'min' => '1',
-                    'max' => '1000',
+                    'max' => '10000',
                     'placeholder' => $service['default_limit']
                 ),
-                'description' => 'تعداد مجاز استفاده در روز'
+                'description' => 'تعداد کل استفاده‌های مجاز برای این سرویس'
             ));
             
             echo '</div>';
@@ -344,10 +344,6 @@ public function ajax_generate_quick_report() {
                     <h3>مجوزهای فعال</h3>
                     <span class="stat-number"><?php echo $this->license->get_active_licenses_count(); ?></span>
                 </div>
-                <div class="stat-card">
-                    <h3>سرویس‌های استفاده شده امروز</h3>
-                    <span class="stat-number"><?php echo $this->license->get_today_usage_count(); ?></span>
-                </div>
             </div>
             
             <div class="abjad-settings">
@@ -387,8 +383,6 @@ public function ajax_generate_quick_report() {
         <div class="abjad-dashboard-widget">
             <ul>
                 <li>📊 مجوزهای فعال: <strong><?php echo $stats['active_licenses']; ?></strong></li>
-                <li>🔄 استفاده امروز: <strong><?php echo $stats['today_usage']; ?></strong></li>
-                <li>📈 استفاده این ماه: <strong><?php echo $stats['month_usage']; ?></strong></li>
             </ul>
             <p><a href="<?php echo admin_url('admin.php?page=abjad-services'); ?>">مشاهده جزئیات →</a></p>
         </div>

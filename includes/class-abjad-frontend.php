@@ -56,9 +56,9 @@ class Abjad_Frontend {
                         <?php foreach ($license['services'] as $service): ?>
                         <div class="service-status-item">
                             <span class="service-name"><?php echo $service['name']; ?></span>
-                            <span class="service-usage"><?php echo $service['used_today']; ?> / <?php echo $service['daily_limit']; ?></span>
+                            <span class="service-usage"><?php echo $service['used_count']; ?> / <?php echo $service['total_limit']; ?></span>
                             <div class="usage-bar">
-                                <div class="usage-progress" style="width: <?php echo ($service['used_today'] / $service['daily_limit']) * 100; ?>%"></div>
+                                <div class="usage-progress" style="width: <?php echo ($service['total_limit'] > 0) ? (($service['used_count'] / $service['total_limit']) * 100) : 0; ?>%"></div>
                             </div>
                         </div>
                         <?php endforeach; ?>
@@ -107,6 +107,29 @@ class Abjad_Frontend {
         $service_key = sanitize_text_field($_POST['service_key']);
         $input_text = sanitize_textarea_field($_POST['input_text']);
         
+        // بررسی وضعیت مجوز قبل از اجرا
+        $licenses = $this->license->get_user_licenses($user_id);
+        if (empty($licenses)) {
+            wp_send_json_error('شما مجوز فعالی برای این سرویس ندارید.');
+        }
+
+        $license = $licenses[0]; // فرض بر اینکه کاربر یک مجوز اصلی دارد
+        $service_to_use = null;
+        foreach ($license['services'] as $service) {
+            if ($service['key'] === $service_key) {
+                $service_to_use = $service;
+                break;
+            }
+        }
+
+        if (!$service_to_use) {
+            wp_send_json_error('سرویس درخواستی در مجوز شما یافت نشد.');
+        }
+
+        if ($service_to_use['used_count'] >= $service_to_use['total_limit']) {
+            wp_send_json_error('اعتبار استفاده شما از این سرویس به پایان رسیده است.');
+        }
+
         // اجرای سرویس از طریق API
         $result = $this->api->execute_service($user_id, $service_key, $input_text);
         
