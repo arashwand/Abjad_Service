@@ -126,7 +126,7 @@ class Abjad_Frontend {
                     $total_limit = isset($service['total_limit']) ? (int)$service['total_limit'] : (isset($service['daily_limit']) ? (int)$service['daily_limit'] : 0);
                     $total_used = isset($service['total_used']) ? (int)$service['total_used'] : (isset($service['used_today']) ? (int)$service['used_today'] : 0);
 
-                    if ($total_limit === 0 || $total_used < $total_limit) { // 0 a unlimited
+                    if ($total_limit === 0 || $total_used < $total_limit) { // 0 means unlimited
                         $can_execute = true;
                         break;
                     }
