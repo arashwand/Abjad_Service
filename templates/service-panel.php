@@ -183,26 +183,33 @@ $abjad_services_available = array(
                                 );
                                 ?>
                                 
-                                <div class="service-item" data-service="<?php echo $service_key; ?>" 
+                                <?php
+                                // منطق جدید برای محاسبه استفاده کلی
+                                $total_limit = isset($service['total_limit']) ? (int)$service['total_limit'] : (isset($service['daily_limit']) ? (int)$service['daily_limit'] : 0);
+                                $total_used = isset($service['total_used']) ? (int)$service['total_used'] : (isset($service['used_today']) ? (int)$service['used_today'] : 0);
+                                $percentage = ($total_limit > 0) ? min(100, ($total_used / $total_limit) * 100) : 0;
+                                $is_service_expired = ($total_limit > 0 && $total_used >= $total_limit);
+                                ?>
+                                <div class="service-item <?php if ($is_service_expired) echo 'service-disabled'; ?>" data-service="<?php echo $service_key; ?>"
                                      data-license-id="<?php echo $license['id']; ?>">
-                                    
+
                                     <!-- هدر سرویس -->
                                     <div class="service-header">
                                         <div class="service-title">
                                             <span class="service-icon"><?php echo $service_info['icon']; ?></span>
                                             <h5><?php echo $service_info['name']; ?></h5>
                                         </div>
-                                        
+
                                         <div class="service-stats">
                                             <div class="usage-info">
                                                 <span class="usage-text">
-                                                    <?php echo $service['used_today']; ?> / <?php echo $service['daily_limit']; ?>
+                                                    <?php echo $total_used; ?> / <?php echo $total_limit; ?>
                                                 </span>
-                                                <span class="usage-label">استفاده امروز</span>
+                                                <span class="usage-label">میزان استفاده</span>
                                             </div>
                                             <div class="usage-bar">
-                                                <div class="usage-progress" 
-                                                     style="width: <?php echo min(100, ($service['used_today'] / $service['daily_limit']) * 100); ?>%">
+                                                <div class="usage-progress"
+                                                     style="width: <?php echo $percentage; ?>%">
                                                 </div>
                                             </div>
                                         </div>
@@ -215,60 +222,64 @@ $abjad_services_available = array(
 
                                     <!-- رابط کاربری سرویس -->
                                     <div class="service-interface">
-                                        <div class="input-section">
-                                            <textarea 
-                                                class="service-textarea" 
-                                                placeholder="<?php echo $service_info['placeholder']; ?>"
-                                                maxlength="<?php echo $service_info['max_chars'] ?? 5000; ?>"
-                                                data-service="<?php echo $service_key; ?>"
-                                            ></textarea>
-                                            
-                                            <div class="textarea-footer">
-                                                <span class="char-counter">0/<?php echo $service_info['max_chars'] ?? 5000; ?> کاراکتر</span>
-                                                <button class="clear-btn abjad-btn-text">
-                                                    پاک کردن
-                                                </button>
-                                            </div>
-                                        </div>
+                                        <?php if ($is_service_expired): ?>
+                                            <div class="abjad-alert abjad-error">اعتبار این سرویس به اتمام رسیده است.</div>
+                                        <?php else: ?>
+                                            <div class="input-section">
+                                                <textarea
+                                                    class="service-textarea"
+                                                    placeholder="<?php echo $service_info['placeholder']; ?>"
+                                                    maxlength="<?php echo $service_info['max_chars'] ?? 5000; ?>"
+                                                    data-service="<?php echo $service_key; ?>"
+                                                ></textarea>
 
-                                        <div class="action-buttons">
-                                            <button class="execute-btn abjad-btn abjad-btn-primary">
-                                                <span class="btn-icon">⚡</span>
-                                                اجرای سرویس
-                                            </button>
-                                            
-                                            <div class="secondary-actions">
-                                                <button class="abjad-btn-text toggle-details-btn">
-                                                    <span class="btn-icon">🔍</span>
-                                                    تنظیمات پیشرفته
-                                                </button>
-                                            </div>
-                                        </div>
-
-                                        <!-- تنظیمات پیشرفته (قابل collapse) -->
-                                        <div class="advanced-settings" style="display: none;">
-                                            <div class="settings-grid">
-                                                <div class="setting-item">
-                                                    <label>کیفیت خروجی:</label>
-                                                    <select class="quality-select">
-                                                        <option value="standard">استاندارد</option>
-                                                        <option value="high">بالا</option>
-                                                        <option value="premium">پریمیوم</option>
-                                                    </select>
-                                                </div>
-                                                <div class="setting-item">
-                                                    <label>سرعت پردازش:</label>
-                                                    <select class="speed-select">
-                                                        <option value="normal">عادی</option>
-                                                        <option value="fast">سریع</option>
-                                                        <option value="turbo">توربو</option>
-                                                    </select>
+                                                <div class="textarea-footer">
+                                                    <span class="char-counter">0/<?php echo $service_info['max_chars'] ?? 5000; ?> کاراکتر</span>
+                                                    <button class="clear-btn abjad-btn-text">
+                                                        پاک کردن
+                                                    </button>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <!-- نتیجه سرویس -->
-                                        <div class="service-result"></div>
+                                            <div class="action-buttons">
+                                                <button class="execute-btn abjad-btn abjad-btn-primary">
+                                                    <span class="btn-icon">⚡</span>
+                                                    اجرای سرویس
+                                                </button>
+
+                                                <div class="secondary-actions">
+                                                    <button class="abjad-btn-text toggle-details-btn">
+                                                        <span class="btn-icon">🔍</span>
+                                                        تنظیمات پیشرفته
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <!-- تنظیمات پیشرفته (قابل collapse) -->
+                                            <div class="advanced-settings" style="display: none;">
+                                                <div class="settings-grid">
+                                                    <div class="setting-item">
+                                                        <label>کیفیت خروجی:</label>
+                                                        <select class="quality-select">
+                                                            <option value="standard">استاندارد</option>
+                                                            <option value="high">بالا</option>
+                                                            <option value="premium">پریمیوم</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="setting-item">
+                                                        <label>سرعت پردازش:</label>
+                                                        <select class="speed-select">
+                                                            <option value="normal">عادی</option>
+                                                            <option value="fast">سریع</option>
+                                                            <option value="turbo">توربو</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- نتیجه سرویس -->
+                                            <div class="service-result"></div>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
