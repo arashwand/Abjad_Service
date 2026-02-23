@@ -49,7 +49,15 @@ class Abjad_API {
             'timeout' => 30
         ));
         
-        return !is_wp_error($response) && wp_remote_retrieve_response_code($response) === 200;
+        if (is_wp_error($response)) {
+            return false;
+        }
+
+        if (wp_remote_retrieve_response_code($response) === 200) {
+            return json_decode(wp_remote_retrieve_body($response), true);
+        }
+
+        return false;
     }
     
     public function validate_license($token) {

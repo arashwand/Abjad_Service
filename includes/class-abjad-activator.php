@@ -131,10 +131,6 @@ class Abjad_Activator {
     }
     
     private static function schedule_cron_jobs() {
-        if (!wp_next_scheduled('abjad_daily_usage_reset')) {
-            wp_schedule_event(time(), 'daily', 'abjad_daily_usage_reset');
-        }
-        
         if (!wp_next_scheduled('abjad_license_expiry_check')) {
             wp_schedule_event(time(), 'daily', 'abjad_license_expiry_check');
         }
@@ -145,7 +141,6 @@ class Abjad_Activator {
     }
     
     private static function clear_cron_jobs() {
-        wp_clear_scheduled_hook('abjad_daily_usage_reset');
         wp_clear_scheduled_hook('abjad_license_expiry_check');
         wp_clear_scheduled_hook('abjad_cleanup_old_logs');
     }
@@ -188,8 +183,4 @@ class Abjad_Activator {
     }
 }
 
-// ثبت هوک‌های فعال‌سازی و غیرفعال‌سازی
-register_activation_hook(__FILE__, array('Abjad_Activator', 'activate'));
-register_deactivation_hook(__FILE__, array('Abjad_Activator', 'deactivate'));
-register_uninstall_hook(__FILE__, array('Abjad_Activator', 'uninstall'));
 ?>
