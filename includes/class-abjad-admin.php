@@ -18,6 +18,9 @@ class Abjad_Admin {
         add_action('woocommerce_product_options_general_product_data', array($this, 'add_product_fields'));
         add_action('woocommerce_process_product_meta', array($this, 'save_product_fields'));
         
+        // ثبت تنظیمات افزونه
+        add_action('admin_init', array($this, 'register_plugin_settings'));
+
         // پردازش سفارش
         add_action('woocommerce_order_status_completed', array($this, 'handle_order_completion'));
         
@@ -33,6 +36,14 @@ class Abjad_Admin {
     add_action('wp_ajax_abjad_generate_quick_report', array($this, 'ajax_generate_quick_report'));
     }
     
+    public function register_plugin_settings() {
+        register_setting('abjad_settings', 'abjad_api_url', array(
+            'type' => 'string',
+            'sanitize_callback' => 'esc_url_raw',
+            'default' => ''
+        ));
+    }
+
     private function get_available_services() {
         return array(
             'text_to_speech' => array(
@@ -384,48 +395,5 @@ public function ajax_generate_quick_report() {
         <?php
     }
 
-    public function enqueue_admin_scripts($hook) {
-    // فقط در صفحه ویرایش محصول اسکریپت‌ها را بارگذاری کن
-    if ('post.php' !== $hook && 'post-new.php' !== $hook) {
-        return;
-    }
-    
-    // فقط برای محصولات ووکامرس
-    $screen = get_current_screen();
-    if ($screen->post_type !== 'product') {
-        return;
-    }
-    
-    wp_enqueue_script('abjad-admin', ABJAD_PLUGIN_URL . 'assets/js/admin.js', array('jquery'), '1.0.0', true);
-    
-    // انتقال داده‌ها به JavaScript
-    wp_localize_script('abjad-admin', 'abjad_admin', array(
-        'ajax_url' => admin_url('admin-ajax.php'),
-        'nonce' => wp_create_nonce('abjad_admin_nonce'),
-        'default_limits' => array(
-            'text_to_speech' => 50,
-            'text_analysis' => 100,
-            'content_generation' => 30,
-            'smart_translation' => 200,
-            'text_summarization' => 80
-        ),
-        'debug' => defined('WP_DEBUG') && WP_DEBUG
-    ));
-}
-
-public function enqueue_admin_styles($hook) {
-    if ('post.php' !== $hook && 'post-new.php' !== $hook) {
-        return;
-    }
-    
-    $screen = get_current_screen();
-    if ($screen->post_type !== 'product') {
-        return;
-    }
-    
-    wp_enqueue_style('abjad-admin', ABJAD_PLUGIN_URL . 'assets/css/admin.css', array(), '1.0.0');
-}
-
-    
 }
 ?>
